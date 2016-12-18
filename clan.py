@@ -40,6 +40,9 @@ class clan(minqlx.Plugin):
                 # has yet to be properly initialized. We can safely
                 # skip it because the clan will be set later.
                 return
+            if str(player.steam_id)[0] == "9":
+                return value + "\\cn\\{0}\\xcn\\{0}".format("^6(BOT)")
+
             tag_key = _tag_key.format(player.steam_id)
             if tag_key in self.db:
                 return value + "\\cn\\{0}\\xcn\\{0}".format(self.db[tag_key])

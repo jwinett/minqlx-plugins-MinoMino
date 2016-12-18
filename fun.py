@@ -77,6 +77,12 @@ class fun(minqlx.Plugin):
         if channel != "chat":
             return
 
+        r = random.randint(0,100)
+        vo = "sound/vo_female/" if r < 50 else "sound/vo_evil/";
+        vo3 = "sound/vo_female/" if r < 30 else "sound/vo_evil/" if r < 60 else "/sound/vo/"
+        r = str( random.randint(1,3) )
+
+
         msg = self.clean_text(msg)
         if _re_hahaha_yeah.match(msg):
             self.play_sound("sound/player/lucy/taunt.wav")
@@ -93,39 +99,40 @@ class fun(minqlx.Plugin):
         elif _re_f3.match(msg):
             self.play_sound("sound/vo/crash_new/36_04.wav")
         elif "holy shit" in msg.lower():
-            self.play_sound("sound/vo_female/holy_shit")
+            self.play_sound( vo3 + "holy_shit")
         elif _re_welcome.match(msg):
-            self.play_sound("sound/vo_evil/welcome")
+            joe = vo + "welcome"  if r != "3" else "sound/feedback/welcome_02.wav" 
+            self.play_sound(joe)
         elif _re_go.match(msg):
-            self.play_sound("sound/vo/go")
+            self.play_sound(vo3+"go")
         elif _re_beep_boop.match(msg):
             self.play_sound("sound/player/tankjr/taunt.wav")
         elif _re_win.match(msg):
-            self.play_sound("sound/vo_female/you_win.wav")
+            self.play_sound(vo3+"you_win.wav")
         elif _re_lose.match(msg):
-            self.play_sound("sound/vo/you_lose.wav")
+            self.play_sound(vo3+"you_lose.wav")
         elif "impressive" in msg.lower():
-            self.play_sound("sound/vo_female/impressive1.wav")
+            self.play_sound(vo3+"impressive"+r)
         elif "excellent" in msg.lower():
-            self.play_sound("sound/vo_evil/excellent1.wav")
+            self.play_sound(vo3+"excellent"+r)
         elif _re_denied.match(msg):
-            self.play_sound("sound/vo/denied")
+            self.play_sound(vo3+"denied")
         elif _re_balls_out.match(msg):
-            self.play_sound("sound/vo_female/balls_out")
+            self.play_sound( vo + "balls_out")
         elif _re_one.match(msg):
-            self.play_sound("sound/vo_female/one")
+            self.play_sound(vo3+"one")
         elif _re_two.match(msg):
-            self.play_sound("sound/vo_female/two")
+            self.play_sound(vo3+"two")
         elif _re_three.match(msg):
-            self.play_sound("sound/vo_female/three")
+            self.play_sound(vo3+"three")
         elif _re_fight.match(msg):
-            self.play_sound("sound/vo_evil/fight")
+            self.play_sound(vo3+"fight")
         elif _re_gauntlet.match(msg):
-            self.play_sound("sound/vo_evil/gauntlet")
+            self.play_sound(vo+"gauntlet")
         elif _re_humiliation.match(msg):
-            self.play_sound("sound/vo_evil/humiliation1")
+            self.play_sound(vo3+"humiliation"+r)
         elif _re_perfect.match(msg):
-            self.play_sound("sound/vo_evil/perfect")
+            self.play_sound(vo3+"perfect")
         elif _re_wah.match(msg):
             self.play_sound("sound/misc/yousuck")
         elif _re_ah.match(msg):
@@ -155,7 +162,7 @@ class fun(minqlx.Plugin):
         elif _re_salute.match(msg):
             self.play_sound("sound/player/sarge/taunt.wav")
         elif _re_squish.match(msg):
-            self.play_sound("sound/player/orb/taunt.wav")
+            self.play_sound("sound/player/orbb/taunt.wav")
         elif _re_oh_god.match(msg):
             self.play_sound("sound/player/ranger/taunt.wav")
         elif _re_snarl.match(msg):

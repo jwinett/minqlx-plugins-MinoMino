@@ -26,6 +26,7 @@ class plugin_manager(minqlx.Plugin):
         self.add_command("loadall", self.cmd_loadall, 5)
         self.add_command("unloadall", self.cmd_unloadall, 5)
         self.add_command("reloadall", self.cmd_reloadall, 5)
+        self.add_command("showall", self.cmd_showall, 5)
     
     def cmd_load(self, player, msg, channel):
         if len(msg) < 2:
@@ -118,3 +119,7 @@ class plugin_manager(minqlx.Plugin):
                 .format(self.__class__.__name__))
 
         f()
+        
+    def cmd_showall(self, player, msg, channel):
+        reply = "Plugins currently loaded: ^6{}^7".format( ", ".join( sorted( self.plugins) ) )
+        channel.reply(reply)
